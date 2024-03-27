@@ -8,6 +8,8 @@ import StateObjectUpdate from './topics/StateObjectUpdate';
 import StateDyanamincForm from './topics/StateDyanamincForm';
 import StateArrayUpdate from './topics/StateArrayUpdate';
 import {  BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import HIdeShow from './topics/HIdeShow';
+import DynamicAttribute from './topics/DynamicAttribute';
 function App() {
   return (
     <div className=''>
@@ -29,6 +31,12 @@ function App() {
                 <li className="nav-item">
                 <Link className='nav-link' to="/State-Array-Update" >State-Array</Link>
                 </li>
+                <li className="nav-item">
+                 <Link className='nav-link' to="/hide-show" >Hide-show</Link>
+                </li>
+                <li className="nav-item">
+                 <Link className='nav-link' to="/Dyanamic-attribute" >Dyanamic-attribute</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -38,6 +46,8 @@ function App() {
           <Route path='/' element={<Events></Events>}></Route> 
           <Route path='/vaiables' element={<Variables></Variables>} ></Route>
           <Route path='/events'  element={<Events></Events>}></Route>
+          <Route path='/Dyanamic-attribute'  element={<DynamicAttribute></DynamicAttribute>}></Route>
+          <Route path='/hide-show'  element={<HIdeShow></HIdeShow>}></Route>
           <Route path='/State-With-Premitive'  element={<StateWithPremitive></StateWithPremitive>}></Route>
           <Route path='/State-Object-Update'  element={<StateObjectUpdate></StateObjectUpdate>}></Route>
           <Route path='/State-Dyanaminc-Form'  element={<StateDyanamincForm></StateDyanamincForm>}></Route>
