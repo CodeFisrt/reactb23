@@ -14,7 +14,7 @@ const StateDyanamincForm = () => {
             <div className='row'>
                 <div className='col-3'>
                     <label>Name</label>
-                    <input type='text' onChange={(event)=> {updateFromValue(event,'name')}} className='form-control' />
+                    <input type='text' name='name' onChange={(event)=> {updateFromValue(event,'name')}} className='form-control' />
                 </div>
                 <div className='col-3'>
                     <label>City</label>

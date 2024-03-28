@@ -10,6 +10,9 @@ import StateArrayUpdate from './topics/StateArrayUpdate';
 import {  BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import HIdeShow from './topics/HIdeShow';
 import DynamicAttribute from './topics/DynamicAttribute';
+import DynamicClass from './topics/DynamicClass';
+import DynamicCss from './topics/DynamicCss';
+import GetApiCall from './topics/GetApiCall';
 function App() {
   return (
     <div className=''>
@@ -37,6 +40,15 @@ function App() {
                 <li className="nav-item">
                  <Link className='nav-link' to="/Dyanamic-attribute" >Dyanamic-attribute</Link>
                 </li>
+                <li className="nav-item">
+                 <Link className='nav-link' to="/dynamic-class" >dynamic-class</Link>
+                </li>
+                <li className="nav-item">
+                 <Link className='nav-link' to="/dynamic-css" >dynamic-css</Link>
+                </li>
+                <li className="nav-item">
+                 <Link className='nav-link' to="/get-api" >get-api</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -48,6 +60,9 @@ function App() {
           <Route path='/events'  element={<Events></Events>}></Route>
           <Route path='/Dyanamic-attribute'  element={<DynamicAttribute></DynamicAttribute>}></Route>
           <Route path='/hide-show'  element={<HIdeShow></HIdeShow>}></Route>
+          <Route path='/dynamic-class'  element={<DynamicClass></DynamicClass>}></Route>
+          <Route path='/dynamic-css'  element={<DynamicCss></DynamicCss>}></Route>
+          <Route path='/get-api'  element={<GetApiCall></GetApiCall>}></Route>
           <Route path='/State-With-Premitive'  element={<StateWithPremitive></StateWithPremitive>}></Route>
           <Route path='/State-Object-Update'  element={<StateObjectUpdate></StateObjectUpdate>}></Route>
           <Route path='/State-Dyanaminc-Form'  element={<StateDyanamincForm></StateDyanamincForm>}></Route>
