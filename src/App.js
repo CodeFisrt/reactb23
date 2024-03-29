@@ -13,6 +13,7 @@ import DynamicAttribute from './topics/DynamicAttribute';
 import DynamicClass from './topics/DynamicClass';
 import DynamicCss from './topics/DynamicCss';
 import GetApiCall from './topics/GetApiCall';
+import UserList from './UserApp/UserList';
 function App() {
   return (
     <div className=''>
@@ -25,30 +26,10 @@ function App() {
                 <li className="nav-item"> 
                   <Link className='nav-link' to="/vaiables" >Variables</Link>
                 </li>
-                <li className="nav-item">
-                <Link className='nav-link' to="/events" >Events</Link>
+                <li className="nav-item"> 
+                  <Link className='nav-link' to="/user-list" >User-list</Link>
                 </li>
-                <li className="nav-item">
-                <Link className='nav-link' to="/State-With-Premitive" >State-Premitive</Link>
-                </li>
-                <li className="nav-item">
-                <Link className='nav-link' to="/State-Array-Update" >State-Array</Link>
-                </li>
-                <li className="nav-item">
-                 <Link className='nav-link' to="/hide-show" >Hide-show</Link>
-                </li>
-                <li className="nav-item">
-                 <Link className='nav-link' to="/Dyanamic-attribute" >Dyanamic-attribute</Link>
-                </li>
-                <li className="nav-item">
-                 <Link className='nav-link' to="/dynamic-class" >dynamic-class</Link>
-                </li>
-                <li className="nav-item">
-                 <Link className='nav-link' to="/dynamic-css" >dynamic-css</Link>
-                </li>
-                <li className="nav-item">
-                 <Link className='nav-link' to="/get-api" >get-api</Link>
-                </li>
+                
               </ul>
             </div>
           </div>
@@ -57,16 +38,7 @@ function App() {
           {/* Default Route */}
           <Route path='/' element={<Events></Events>}></Route> 
           <Route path='/vaiables' element={<Variables></Variables>} ></Route>
-          <Route path='/events'  element={<Events></Events>}></Route>
-          <Route path='/Dyanamic-attribute'  element={<DynamicAttribute></DynamicAttribute>}></Route>
-          <Route path='/hide-show'  element={<HIdeShow></HIdeShow>}></Route>
-          <Route path='/dynamic-class'  element={<DynamicClass></DynamicClass>}></Route>
-          <Route path='/dynamic-css'  element={<DynamicCss></DynamicCss>}></Route>
-          <Route path='/get-api'  element={<GetApiCall></GetApiCall>}></Route>
-          <Route path='/State-With-Premitive'  element={<StateWithPremitive></StateWithPremitive>}></Route>
-          <Route path='/State-Object-Update'  element={<StateObjectUpdate></StateObjectUpdate>}></Route>
-          <Route path='/State-Dyanaminc-Form'  element={<StateDyanamincForm></StateDyanamincForm>}></Route>
-          <Route path='/State-Array-Update'  element={<StateArrayUpdate></StateArrayUpdate>}></Route>
+          <Route path='/user-list' element={<UserList></UserList>} ></Route>
         </Routes>
       </BrowserRouter> 
     </div>

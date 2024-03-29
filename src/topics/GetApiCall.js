@@ -13,11 +13,17 @@ const GetApiCall = () => {
         {studid:14,name:'Aditya',city:'Mumbai',contact:'667788990' }
     ]
     const [userList,setUserList] = useState([]);
+    const [productList, setProductList] = useState([])
 
     const getAllUsers  = async () =>{
         const result = await axios.get("https://jsonplaceholder.typicode.com/users");
         debugger;
         setUserList(result.data);
+    }
+    const getAllProducts = async () => {
+        const response =  await axios.get("https://freeapi.gerasim.in/api/BigBasket/GetAllProducts");
+        debugger;
+        setProductList(response.data.data)
     }
     return (
         <div>
@@ -50,6 +56,35 @@ const GetApiCall = () => {
                     </select>
                 </div>
             </div>
+            <button  className='btn btn-primary' onClick={getAllProducts}>Load Products</button>
+            <div className='row'> 
+                <div className='col-6'>
+                    <table className='table table-bordered'>
+                        <thead>
+                            <tr>
+                                <th>Sr</th>
+                                <th> Sku</th>
+                                <th> Name</th>
+                                <th> Price</th>
+                                <th> ShortName</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                               productList.map((product,index)=>{
+                                return(<tr>
+                                    <td>{index+1}</td>
+                                    <td> {product.productSku}</td>
+                                    <td> {product.productName}</td>
+                                    <td> {product.productPrice}</td>
+                                    <td> {product.productShortName}</td>
+                                </tr>)
+                               }) 
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                </div>
             <div className='row'>
                 <div className='col-6'>
                     <table className='table table-bordered'>
