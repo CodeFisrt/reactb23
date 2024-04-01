@@ -14,6 +14,7 @@ import DynamicClass from './topics/DynamicClass';
 import DynamicCss from './topics/DynamicCss';
 import GetApiCall from './topics/GetApiCall';
 import UserList from './UserApp/UserList';
+import Patient from './SampleApp/Patient';
 function App() {
   return (
     <div className=''>
@@ -29,6 +30,9 @@ function App() {
                 <li className="nav-item"> 
                   <Link className='nav-link' to="/user-list" >User-list</Link>
                 </li>
+                <li className="nav-item"> 
+                  <Link className='nav-link' to="/patient" >patient</Link>
+                </li>
                 
               </ul>
             </div>
@@ -39,6 +43,7 @@ function App() {
           <Route path='/' element={<Events></Events>}></Route> 
           <Route path='/vaiables' element={<Variables></Variables>} ></Route>
           <Route path='/user-list' element={<UserList></UserList>} ></Route>
+          <Route path='/patient' element={<Patient></Patient>} ></Route>
         </Routes>
       </BrowserRouter> 
     </div>
