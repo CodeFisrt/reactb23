@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PgogressBar from "../reusable/PgogressBar";
 
 const UserList = () => {
     const [userObj, setUserObj] = useState({
@@ -11,8 +12,6 @@ const UserList = () => {
         role: "",
     });
     const [userList, setUserList] = useState([]);
-    
-     
 
     useEffect(() => {
         console.log("UseEffect");
@@ -69,15 +68,17 @@ const UserList = () => {
             alert(result.data.message);
         }
     }
+    const perv = '50'
     return (
         <div>
+            <PgogressBar progressValue={perv} bgColor={'bg-secondary'}></PgogressBar>
             <div className="card">
                 <div className="card-header bg-success">Create User</div>
                 <div className="card-body">
                     <div className="row">
                         <div className="col-8">
                             <div className="row">
-                                <div className="col-12 table-responsive">
+                                <div className="col-12 table-responsive"> 
                                 <table className="table table-bordered">
                                 <thead>
                                     <tr>

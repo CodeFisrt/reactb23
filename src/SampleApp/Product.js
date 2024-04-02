@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "../reusable/Card";
+import PgogressBar from "../reusable/PgogressBar";
 
 const Product = () => {
   const [productList, setproductList] = useState([]);
@@ -48,10 +50,10 @@ const Product = () => {
       alert(result.data.message);
     }
   };
-
+  const perv = '80'
   return (
-    <div>
-      {JSON.stringify(newProduct)}
+    <div> 
+      <PgogressBar progressValue={perv} bgColor={'bg-danger'}></PgogressBar>
       <div className="row">
         <div className="col-8">
           <div className="card">
@@ -60,18 +62,9 @@ const Product = () => {
               <div className="row">
                 {productList.map((item, index) => {
                   return (
-                    <div className="col-3 pt-2">
-                      <div className="card">
-                        <div className="card-body">
-                          <h6 className="card-title">{item.productShortName}</h6>
-                          <small className="card-text">
-                          category  : {item.categoryName}
-                          </small>
-                          <br></br>
-                          
-                        </div>
-                      </div>
-                    </div>
+                    <div className="col-3">
+                      <Card product={item}></Card>
+                     </div> 
                   );
                 })}
               </div>
