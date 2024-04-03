@@ -1,7 +1,6 @@
 import React from "react";
 
-const PgogressBar = (props) => {
-    debugger; 
+const PgogressBar = (props) => { 
   return (
     <div>
       <div className="progress">

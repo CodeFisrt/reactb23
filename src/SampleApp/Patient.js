@@ -4,6 +4,8 @@ const Patient = () => {
 
     const [patientList, setPatientList] = useState([]);
     const [isFormSubmitted, setIsFormSubmited] = useState(false);
+    const [userList, setUserList] = useState([]);
+
     const [newPatient, setNewPatient] = useState({
         "patientId": 0,
         "name": "",
@@ -16,7 +18,22 @@ const Patient = () => {
 
     useEffect(()=>{
         getAllPatients();
+        getAllUser()
     },[])
+
+    const getAllUser = async () => {
+      try {
+          const response = await axios.get(
+              "https://freeapi.gerasim.in/api/EventBooking/GetAllUsers"
+          );
+          debugger;
+          setUserList(response.data.data);
+      } catch (error) {
+          debugger;
+          alert("API Error")
+      }
+     
+  };
 
     const updateFormValue = (event,key) => {
         setNewPatient(prevObj => ( {...prevObj,[key]:event.target.value}))

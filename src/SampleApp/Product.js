@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../reusable/Card";
 import PgogressBar from "../reusable/PgogressBar";
+import {getUserList} from '../service/Service'
 
 const Product = () => {
   const [productList, setproductList] = useState([]);
+  const [userList, setUserList] = useState([]);
+
   const [categoryList, setCategoryList] = useState([]);
   const [newProduct, setnewProduct] = useState({
     ProductId: 0,
@@ -23,7 +26,16 @@ const Product = () => {
   useEffect(() => {
     getAll();
     getAllCategiry();
+    getAllUser()
   }, []);
+
+  const getAllUser = async () => {
+    getUserList().then(result=>{
+      setUserList(result.data)
+    })
+   
+};
+
 
   const updateFormValue = (event, key) => {
     setnewProduct((prevObj) => ({ ...prevObj, [key]: event.target.value }));

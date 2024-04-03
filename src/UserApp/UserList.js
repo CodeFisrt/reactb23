@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PgogressBar from "../reusable/PgogressBar";
 
+import { getUserList, createUser } from '../service/Service'
+
 const UserList = () => {
     const [userObj, setUserObj] = useState({
         userId: 0,
@@ -21,29 +23,31 @@ const UserList = () => {
     const updateFormValue = (event, key) => {
         setUserObj((prevObj) => ({ ...prevObj, [key]: event.target.value }));
     };
-    const getAllUser = async () => {
-        const response = await axios.get(
-            "https://freeapi.gerasim.in/api/EventBooking/GetAllUsers"
-        );
-        setUserList(response.data.data);
+    const getAllUser = () => {
+        getUserList().then(result => {
+            setUserList(result.data)
+        })
+
     };
-    const saveUser = async () => {
-        const result = await axios.post(
-            "https://freeapi.gerasim.in/api/EventBooking/CreateUser",
-            userObj
-        );
-        debugger;
-        if (result.data.result) {
-            alert("User Created Success");
-            getAllUser();
-        } else {
-            alert(result.data.message);
+    const saveUser = () => {
+        try {
+            createUser(userObj).then(result => {
+                if (result.result) {
+                    alert("User Created Success");
+                    getAllUser();
+                } else {
+                    alert(result.message);
+                }
+            })
+        } catch (error) {
+            debugger;
         }
+
     };
     const onEdit = (userObj) => {
         setUserObj(userObj)
     }
- 
+
     const updateUser = async () => {
         const result = await axios.post(
             "https://freeapi.gerasim.in/api/EventBooking/UpdateUser",
@@ -59,7 +63,7 @@ const UserList = () => {
     }
     const onDelete = async (userId) => {
         const result = await axios.get(
-            "https://freeapi.gerasim.in/api/EventBooking/DeleteUserById?id=" +userId );
+            "https://freeapi.gerasim.in/api/EventBooking/DeleteUserById?id=" + userId);
         debugger;
         if (result.data.result) {
             alert("User Deleted Success");
@@ -78,37 +82,37 @@ const UserList = () => {
                     <div className="row">
                         <div className="col-8">
                             <div className="row">
-                                <div className="col-12 table-responsive"> 
-                                <table className="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Sr</th>
-                                        <th> Name</th> 
-                                        <th> Contact</th>
-                                        <th> Password</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {userList.map((user, index) => {
-                                        return (
+                                <div className="col-12 table-responsive">
+                                    <table className="table table-bordered">
+                                        <thead>
                                             <tr>
-                                                <td>{index + 1}</td>
-                                                <td> {user.name}</td> 
-                                                <td> {user.contactNo}</td>
-                                                <td> {user.password}</td>
-                                                <td>
-                                                    <button className="btn btn-success" onClick={()=>{onEdit(user)}}>Edit</button>
-                                                    <button className="btn btn-success" onClick={()=>{onDelete(user.userId)}}>Delete</button>
-                                                </td>
+                                                <th>Sr</th>
+                                                <th> Name</th>
+                                                <th> Contact</th>
+                                                <th> Password</th>
+                                                <th>Action</th>
                                             </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
+                                        </thead>
+                                        <tbody>
+                                            {userList.map((user, index) => {
+                                                return (
+                                                    <tr>
+                                                        <td>{index + 1}</td>
+                                                        <td> {user.name}</td>
+                                                        <td> {user.contactNo}</td>
+                                                        <td> {user.password}</td>
+                                                        <td>
+                                                            <button className="btn btn-success" onClick={() => { onEdit(user) }}>Edit</button>
+                                                            <button className="btn btn-success" onClick={() => { onDelete(user.userId) }}>Delete</button>
+                                                        </td>
+                                                    </tr>
+                                                );
+                                            })}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div className="col-4">
                             {JSON.stringify(userObj)}
@@ -150,7 +154,7 @@ const UserList = () => {
                             <div className="row">
                                 <div className="col-4">
                                     <label>Role</label>
-                                    <select    value={userObj.role}
+                                    <select value={userObj.role}
                                         className="form-select"
                                         onChange={(event) => {
                                             updateFormValue(event, "role");
@@ -179,17 +183,17 @@ const UserList = () => {
                                 </div>
                                 <div className="col-4">
                                     {
-                                        userObj.userId == 0 &&  <button className="btn btn-success" onClick={saveUser}>
-                                        Save User
-                                    </button>
-                                    } 
-                                    {
-                                        userObj.userId != 0 &&  <button className="btn btn-warning" onClick={updateUser}>
-                                        Update User
-                                    </button>
+                                        userObj.userId == 0 && <button className="btn btn-success" onClick={saveUser}>
+                                            Save User
+                                        </button>
                                     }
-                                   
-                                    
+                                    {
+                                        userObj.userId != 0 && <button className="btn btn-warning" onClick={updateUser}>
+                                            Update User
+                                        </button>
+                                    }
+
+
                                 </div>
                             </div>
                         </div>
