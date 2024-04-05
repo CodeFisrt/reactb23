@@ -16,6 +16,7 @@ import GetApiCall from './topics/GetApiCall';
 import UserList from './UserApp/UserList';
 import Patient from './SampleApp/Patient';
 import Product from './SampleApp/Product';
+import UseEffectTest from './topics/UseEffectTest';
 function App() {
   return (
     <div className=''>
@@ -37,6 +38,9 @@ function App() {
                 <li className="nav-item"> 
                   <Link className='nav-link' to="/product" >product</Link>
                 </li>
+                <li className="nav-item"> 
+                  <Link className='nav-link' to="/UseEffect" >UseEffect</Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -47,6 +51,7 @@ function App() {
           <Route path='/vaiables' element={<Variables></Variables>} ></Route>
           <Route path='/user-list' element={<UserList></UserList>} ></Route>
           <Route path='/patient' element={<Patient></Patient>} ></Route>
+          <Route path='/UseEffect' element={<UseEffectTest></UseEffectTest>} ></Route>
           <Route path='/product' element={<Product></Product>} ></Route>
         </Routes>
       </BrowserRouter> 
