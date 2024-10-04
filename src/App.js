@@ -20,6 +20,7 @@ import UseEffectTest from './topics/UseEffectTest';
 function App() {
   return (
     <div className=''>
+      <p>Hello From P tag</p>
       <h1>Hello</h1>
       <BrowserRouter>
         <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
